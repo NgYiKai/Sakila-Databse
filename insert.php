@@ -1,5 +1,4 @@
 <?php
-
     $conn=new mysqli('localhost','root','','sakila');
 
     if ($conn->connect_error) {
@@ -161,7 +160,7 @@
 <!DOCTYPE html>
 <html>
 <head>  
-    <title>INSERT</title>
+    <title>Select</title>
     <style type="text/css">
     .header{
             background-color: #F64C72;
@@ -271,9 +270,10 @@
             font-size: 20px;
         }
     </style>
+    </head>
 <body class="grey lighten-4">
     <div class="header">
-    <a id="ru" href="index.php" style="color:#FFFFFF"><h1>S  A  K  I  L  A</h1></a>
+    <a id="ru" href="taskc.php" style="color:#FFFFFF"><h1>S  A  K  I  L  A</h1></a>
     </div>
     
     <div>

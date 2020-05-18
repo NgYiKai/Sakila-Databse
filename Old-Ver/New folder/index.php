@@ -153,7 +153,7 @@
             color:white;
             font-size: 20px;
             border: 3px solid black;
-            margin-left: 350px;
+            margin-left: 400px;
             width: 70%;
             text-align: center;
             border-collapse: collapse;
@@ -164,9 +164,11 @@
             margin-bottom: 5px;
         }
 
-        th{
-            background-color: pink;
-            color: black;
+        .button{
+            padding: 0;
+            border: none;
+            background: none;
+            font-size: 32px;
         }
 		
     </style>
@@ -174,7 +176,7 @@
 
 <body class="grey lighten-4">
     <div class="header">
-    <a id="ru" href="taskc.php" style="color:#FFFFFF"><h1>S  A  K  I  L  A</h1></a>
+    <a id="ru" href="index.php" style="color:#FFFFFF"><h1>S  A  K  I  L  A</h1></a>
     </div>
     
     <div>
@@ -209,70 +211,32 @@
     </div>
 	
 
-	
-	     
+    <!-- <form  method="get">
     <div>
         <ul>
-            <li class="buttons"><b><a href= "insert.php">INSERT</a></b></li>
+            <li class="buttons"><b><button class="button" name="action" type="submit" value="insert">INSERT</button> </b></li>
+            <li class="buttons"><b><button   class="button" name="action" type="submit" value="update">UPDATE</button><b></li>
+            <li class="buttons"><b><button   class="button" name="action" type="submit" value="delete">DELETE</button></b></li>
+            <li class="buttons"><b><button   class="button" name="action" type="submit" value="select">SELECT</button></b></li>
+        </ul>
+    </div>
+    </form> -->
+    
+ 
+
+    <div>
+        <ul>
+            <li class="buttons"><b> <a href= "insert.php"> INSERT</a> </b></li>
             <li class="buttons"><b><a href= "update.php">UPDATE</a><b></li>
             <li class="buttons"><b><a href= "delete.php">DELETE</a></b></li>
             <li class="buttons"><b><a href= "select.php">SELECT</a></b></li>
         </ul>
     </div>
-	<div class="table">
+
     <?php 
         if (!empty($_GET)){
-            $conn=new mysqli('localhost','root','','sakila');
-
-            if ($conn->connect_error) {
-                die("Connection failed: " . $conn->connect_error);
-            }
-        
-
-            $query=$_GET["table"];
-            $sql="SELECT * FROM $query";
-            $sql2="SHOW columns FROM $query";
-
-            $data_queryresult = $conn->query($sql);
-            $column_name_queryresult = $conn->query($sql2);
-
-            $column_name=array();
-            while($row = mysqli_fetch_array($column_name_queryresult)){
-                $column_name[]=$row['Field'];
-                
-            }
-
-            if ($data_queryresult->num_rows > 0) {
-
-                echo "<table><tr>";
-                for($counter=0,$i=0;$counter<count($column_name);$counter++){
-                    echo "<th>".$column_name[$i]."</th>";
-                    $i++;
-                }   
-                echo "</tr>";   
-                
-                while($row = $data_queryresult->fetch_assoc()) {
-                    echo "<tr>";
-                    for($counter=0,$i=0;$counter<count($column_name);$counter++){
-                        echo "<td>".$row["$column_name[$i]"]."</td>";
-                        $i++;
-                    }   
-                    echo "<tr>";
-                }
-                echo "</table>";
-            } else {
-                echo "0 results";
-            }
-            
-            $conn->close();
-        }
+        include("select.php");}
     ?>
-    </div>
-    
-    <div class="footer">
-		<hr class="solid">
-		<p>Eng-US</p>
-    </div>
 	
 
 
